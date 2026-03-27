@@ -7,7 +7,8 @@ class IOSXR < Oxidized::Model
   comment  '! '
 
   cmd :all do |cfg|
-    cfg.each_line.to_a[2..-2].join
+    cfg.gsub!(/\r\n?/, "\n")
+    cfg.cut_both.sub(/^\n+/, '')
   end
 
   cmd :secret do |cfg|
@@ -17,15 +18,15 @@ class IOSXR < Oxidized::Model
   end
 
   cmd 'show inventory all' do |cfg|
-    comment cfg
+    comment "#{cfg}\n"
   end
 
   cmd 'show platform' do |cfg|
-    comment cfg
+    comment "#{cfg}\n"
   end
 
   cmd 'show running-config' do |cfg|
-    cfg = cfg.each_line.to_a[1..-1].join
+    cfg.gsub! /^Building configuration...\n/, ''
     cfg
   end
 

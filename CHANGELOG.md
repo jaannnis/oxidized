@@ -45,6 +45,7 @@ The SCP gem is now an optional dependency as it will rarely be used - you must i
 - voss: more cleanup of constantly changing values (fan & temp) for at least Extreme Networks 7520-48Y-8C-FabricEngine (8.10.5.0)
 - truenas: Added retry logic to use sudo for reading/dumping the configuration database if needed. Fixes #3767 (@neilschelly)
 - aoscx: update regex to include 'N/A' in FAN speed parsing (@solrac200, @robertcheramy)
+- iosxr: prevent dropping the first line of command outputs (e.g. `show platform`) when `no-timestamp` is enabled (@jaannnis)
 
 ## [0.35.0 - 2025-12-04]
 ### Release Notes
